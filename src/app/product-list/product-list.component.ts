@@ -31,4 +31,10 @@ export class ProductListComponent implements OnInit {
       this.products = response.data;
     });
   }
+
+  getInitials(name: string): string {
+    const initials = name.split(' ').map(word => word[0]).join('');
+    return initials.slice(0, 2).toUpperCase();
+  }
+  
 }
