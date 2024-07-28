@@ -13,7 +13,6 @@
   
   th, td {
     padding: 12px 15px;
-    border: 1px solid #ddd;
   }
   
   th {
@@ -24,17 +23,29 @@
     border-bottom: 1px solid #ddd;
   }
   
-  tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+
+  .avatar-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  tr:last-of-type {
-    border-bottom: 2px solid #009879;
-  }
-  
-  .product-logo {
+  .avatar {
     width: 50px;
     height: 50px;
-    object-fit: contain;
+    border-radius: 50%;
+    background-color: #BBB;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
   }
-  
+
+  .results-label {
+    text-align: left;
+    font-size: 16px;
+    margin-top: 10px;
+  }
