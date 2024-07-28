@@ -13,7 +13,7 @@ describe('ProductListComponent', () => {
     data: [
       {
         id: 'uno',
-        name: 'Nombre producto',
+        name: 'Nombre Producto',
         description: 'Descripción producto',
         logo: 'assets-1.png',
         date_release: '2025-01-01',
@@ -24,8 +24,10 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductListComponent],
-      imports: [HttpClientTestingModule],
+      imports: [
+        ProductListComponent,
+        HttpClientTestingModule
+      ],
       providers: [ProductService]
     }).compileComponents();
   });
@@ -39,19 +41,20 @@ describe('ProductListComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
-
-  it('should display the correct number of products', () => {
-    console.log('displaying products')
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelectorAll('tbody tr').length).toBe(1);
-    expect(compiled.querySelector('.results-label').textContent).toContain('1 Resultados');
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
-  // it('should display the correct initials for product avatar', () => {
-  //   const compiled = fixture.nativeElement;
-  //   expect(compiled.querySelector('.avatar').textContent).toBe('NP');
-  // });
+  it('should display the correct number of products', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelectorAll('tbody tr').length).toBe(dummyProducts.data.length);
+    expect(compiled.querySelector('.results-label').textContent).toContain(`${dummyProducts.data.length} Resultados`);
+  });
+
+  it('should display the correct initials for product avatar', () => {
+    const compiled = fixture.nativeElement;
+    const avatar = compiled.querySelector('.avatar').textContent.trim();
+    const expectedInitials = dummyProducts.data[0].name.split(' ').map(n => n[0]).join('');
+    expect(avatar).toBe(expectedInitials);
+  });
 });
