@@ -1,4 +1,8 @@
+.content-container {
+    background-color: #f3f3f3;
+}
 .table-container {
+    background-color: #FFF;
     width: 100%;
     overflow-x: auto;
   }
