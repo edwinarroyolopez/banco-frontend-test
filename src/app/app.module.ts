@@ -2,20 +2,51 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+import { AppRoutingModule } from './app-routing.module';
+import { FeaturesModule } from './features/features.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProductListComponent
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    FeaturesModule,
+    AppRoutingModule,
   ],
+  exports: [],
   providers: [ProductService],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }
+
+
+
+// import { NgModule } from '@angular/core';
+// import { BrowserModule } from '@angular/platform-browser';
+// import { FormsModule } from '@angular/forms';
+
+// import { AppComponent } from './app.component';
+// import { AppRoutingModule } from './app-routing.module';
+// import { CoreModule } from './core/core.module';
+// import { SharedModule } from './shared/shared.module';
+// import { FeaturesModule } from './features/features.module';
+
+// @NgModule({
+//   declarations: [
+//     AppComponent
+//   ],
+//   imports: [
+//     BrowserModule,
+//     FormsModule,
+//     AppRoutingModule,  // Importa AppRoutingModule aquí
+//     CoreModule,
+//     SharedModule,
+//     FeaturesModule
+//   ],
+//   providers: [],
+//   bootstrap: [AppComponent]
+// })
+// export class AppModule { }
