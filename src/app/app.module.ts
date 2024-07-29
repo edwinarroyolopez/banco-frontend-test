@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
-import { ProductService } from './product.service';
 import { AppRoutingModule } from './app-routing.module';
 import { FeaturesModule } from './features/features.module';
 
@@ -17,7 +16,7 @@ import { FeaturesModule } from './features/features.module';
     AppRoutingModule,
   ],
   exports: [],
-  providers: [ProductService],
+  providers: [],
   bootstrap: []
 })
 export class AppModule { }
