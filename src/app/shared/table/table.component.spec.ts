@@ -1,13 +1,15 @@
+
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ProductListComponent } from './product-list.component';
-import { ProductService } from '../product.service';
+import { TableComponent } from './table.component';
+import { DataService } from '../../core/data.service';
 import { of } from 'rxjs';
 
-describe('ProductListComponent', () => {
-  let component: ProductListComponent;
-  let fixture: ComponentFixture<ProductListComponent>;
-  let productService: ProductService;
+describe('TableComponent', () => {
+  let component: TableComponent;
+  let fixture: ComponentFixture<TableComponent>;
+  let dataService: DataService;
 
   const dummyProducts = {
     data: [
@@ -25,19 +27,19 @@ describe('ProductListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        ProductListComponent,
+        TableComponent,
         HttpClientTestingModule
       ],
-      providers: [ProductService]
+      providers: [DataService]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductListComponent);
+    fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
-    productService = TestBed.inject(ProductService);
+    dataService = TestBed.inject(DataService);
 
-    spyOn(productService, 'getProducts').and.returnValue(of(dummyProducts));
+    spyOn(dataService, 'getProducts').and.returnValue(of(dummyProducts));
     fixture.detectChanges();
   });
 

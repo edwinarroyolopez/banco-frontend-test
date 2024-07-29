@@ -1,0 +1,17 @@
+<div class="modal">
+    <form (submit)="onSubmit()">
+        <label>
+            Dato A:
+            <input type="text" [(ngModel)]="newItem.datoA" name="datoA" />
+        </label>
+        <label>
+            Dato B:
+            <input type="text" [(ngModel)]="newItem.datoB" name="datoB" />
+        </label>
+        <label>
+            Dato C:
+            <input type="text" [(ngModel)]="newItem.datoC" name="datoC" />
+        </label>
+        <button type="submit">Add</button>
+    </form>
+</div>
