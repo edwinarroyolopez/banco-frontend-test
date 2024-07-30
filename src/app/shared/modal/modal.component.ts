@@ -24,10 +24,8 @@ export class ModalComponent {
   onSubmit() {
     console.log('onSubmit', this.newProduct);
     
-    // Llama a addItem con el nuevo producto
     this.dataService.addItem(this.newProduct);
     
-    // Reinicia el formulario
     this.newProduct = {
       id: '',
       name: '',
@@ -36,5 +34,8 @@ export class ModalComponent {
       date_release: '',
       date_revision: ''
     };
+  }
+
+  closeModal() {
   }
 }
