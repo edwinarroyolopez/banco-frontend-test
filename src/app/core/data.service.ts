@@ -56,4 +56,9 @@ export class DataService {
     );
     this.dataSubject.next(filteredData.slice(0, this.itemsPerPage));
   }
+
+  removeProduct(productId: string) {
+    this.data = this.data.filter(product => product.id !== productId);
+    this.updatePaginatedProducts();
+  }
 }

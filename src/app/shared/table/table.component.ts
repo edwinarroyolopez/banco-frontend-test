@@ -57,16 +57,13 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   confirmDeleteProduct(product: Product): void {
-
-    const productId: string = product.id;
-
     this.modalService.openModal(`¿Está seguro de eliminar el producto ${product.name}?`, () => {
-      this.deleteProduct(productId);
+      this.deleteProduct(product.id);
     });
   }
-
+  
   deleteProduct(productId: string): void {
-    this.filteredProducts = this.filteredProducts.filter(product => product.id !== productId);
-    this.updatePaginatedProducts();
+    this.dataService.removeProduct(productId);
   }
+  
 }
