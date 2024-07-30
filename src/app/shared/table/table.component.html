@@ -1,5 +1,4 @@
 <div class="content-container">
-    <!-- <app-search (searchChanged)="onSearchTermChanged($event)"></app-search> -->
     <div class="table-container">
         <table>
             <thead>
@@ -12,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products">
+                <tr *ngFor="let product of filteredProducts">
                     <td class="avatar-cell">
                         <div class="avatar">{{ getInitials(product.name) }}</div>
                     </td>

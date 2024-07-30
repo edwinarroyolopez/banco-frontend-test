@@ -5,19 +5,36 @@ import { DataService } from '../../core/data.service';
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css',
+  styleUrls: ['./modal.component.css'],
   standalone: true,
   imports: [FormsModule]
 })
 export class ModalComponent {
-  newItem = { datoA: '', datoB: '', datoC: '' };
+  newProduct = {
+    id: '', 
+    name: '',
+    description: '',
+    logo: '',
+    date_release: '',
+    date_revision: ''
+  };
 
   constructor(private dataService: DataService) {}
 
   onSubmit() {
-    console.log('onSubmit');
+    console.log('onSubmit', this.newProduct);
     
-    this.dataService.addItem(this.newItem);
-    this.newItem = { datoA: '', datoB: '', datoC: '' };
+    // Llama a addItem con el nuevo producto
+    this.dataService.addItem(this.newProduct);
+    
+    // Reinicia el formulario
+    this.newProduct = {
+      id: '',
+      name: '',
+      description: '',
+      logo: '',
+      date_release: '',
+      date_revision: ''
+    };
   }
 }
