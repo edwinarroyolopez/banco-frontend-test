@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { FeaturesModule } from './features/features.module';
+import { FilterComponent } from './shared/filter/filter.component';
+import { DataService } from './core/data.service';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [],
@@ -14,38 +17,11 @@ import { FeaturesModule } from './features/features.module';
     FormsModule,
     FeaturesModule,
     AppRoutingModule,
+    FilterComponent,
+    AppComponent
   ],
   exports: [],
-  providers: [],
+  providers: [DataService],
   bootstrap: []
 })
 export class AppModule { }
-
-
-
-// import { NgModule } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
-// import { FormsModule } from '@angular/forms';
-
-// import { AppComponent } from './app.component';
-// import { AppRoutingModule } from './app-routing.module';
-// import { CoreModule } from './core/core.module';
-// import { SharedModule } from './shared/shared.module';
-// import { FeaturesModule } from './features/features.module';
-
-// @NgModule({
-//   declarations: [
-//     AppComponent
-//   ],
-//   imports: [
-//     BrowserModule,
-//     FormsModule,
-//     AppRoutingModule,  // Importa AppRoutingModule aquí
-//     CoreModule,
-//     SharedModule,
-//     FeaturesModule
-//   ],
-//   providers: [],
-//   bootstrap: [AppComponent]
-// })
-// export class AppModule { }

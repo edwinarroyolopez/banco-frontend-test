@@ -23,6 +23,7 @@ export class HomeComponent {
   isModalOpen = false;
 
   openModal() {
+    console.log('openModal');
     this.isModalOpen = true;
   }
 
