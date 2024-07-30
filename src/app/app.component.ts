@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './features/home/home.component';
+
 import { CommonModule } from '@angular/common';
+import { HomeComponent } from './features/home/home.component';
+import { AddProductComponent } from './features/add-product/add-product.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, CommonModule],
+  imports: [RouterOutlet, HomeComponent, AddProductComponent, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'banco-frontend-test';
