@@ -2,19 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  logo: string;
-  date_release: string;
-  date_revision: string;
-}
-
-interface ApiResponse {
-  data: Product[];
-}
+import { Product, ApiResponse } from './api-response.model';
 
 @Injectable({
   providedIn: 'root',
