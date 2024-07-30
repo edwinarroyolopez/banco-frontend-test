@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../core/data.service';
 import { Subscription } from 'rxjs';
+import { ModalService } from '../../core/modal.service';
 
 interface Product {
   id: string;
@@ -24,7 +25,7 @@ export class TableComponent implements OnInit, OnDestroy {
   itemsPerPage: number = 5;
   private subscription: Subscription = new Subscription();
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private modalService: ModalService) {}
 
   ngOnInit(): void {
     this.dataService.loadProducts();
@@ -55,15 +56,17 @@ export class TableComponent implements OnInit, OnDestroy {
     this.updatePaginatedProducts();
   }
 
-  confirmDeleteProduct(productId: string) {
-    // this.modalService.openModal('¿Está seguro que quiere eliminar este producto?', () => {
-    //   this.deleteProduct(productId);
-    // });
+  confirmDeleteProduct(product: Product): void {
+
+    const productId: string = product.id;
+
+    this.modalService.openModal(`¿Está seguro de eliminar el producto ${product.name}?`, () => {
+      this.deleteProduct(productId);
+    });
   }
 
-  deleteProduct(productId: string) {
+  deleteProduct(productId: string): void {
     this.filteredProducts = this.filteredProducts.filter(product => product.id !== productId);
     this.updatePaginatedProducts();
   }
-
 }
