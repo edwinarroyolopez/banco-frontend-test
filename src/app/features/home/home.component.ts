@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { FilterComponent } from '../../shared/filter/filter.component';
@@ -15,19 +15,12 @@ import { ModalComponent } from '../../shared/modal/modal.component'
     FilterComponent,
     TableComponent,
     ModalComponent,
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 
 })
 export class HomeComponent {
-  isModalOpen = false;
 
-  openModal() {
-    console.log('openModal');
-    this.isModalOpen = true;
-  }
 
-  closeModal() {
-    this.isModalOpen = false;
-  }
 }
