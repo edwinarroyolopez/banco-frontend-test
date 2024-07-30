@@ -2,69 +2,80 @@
     <h2>Formulario de Registro</h2>
     <hr>
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-      
-      <!-- ID -->
-      <div class="form-group">
-        <label for="id">ID</label>
-        <input id="id" formControlName="id" />
-        <div *ngIf="productForm.get('id')?.invalid && productForm.get('id')?.touched">
-          <small class="error" *ngIf="productForm.get('id')?.errors?.['required']">El ID es obligatorio.</small>
-          <small class="error" *ngIf="productForm.get('id')?.errors?.['minlength']">El ID debe tener al menos 3 caracteres.</small>
-          <small class="error" *ngIf="productForm.get('id')?.errors?.['maxlength']">El ID no puede tener más de 10 caracteres.</small>
-          <small class="error" *ngIf="productForm.get('id')?.errors?.['idTaken']">El ID ya está en uso.</small>
+      <div class="form-row">
+        
+        <!-- ID -->
+        <div class="form-group column">
+          <label for="id">ID</label>
+          <input id="id" formControlName="id" />
+          <div *ngIf="productForm.get('id')?.invalid && productForm.get('id')?.touched">
+            <small class="error" *ngIf="productForm.get('id')?.errors?.['required']">El ID es obligatorio.</small>
+            <small class="error" *ngIf="productForm.get('id')?.errors?.['minlength']">El ID debe tener al menos 3 caracteres.</small>
+            <small class="error" *ngIf="productForm.get('id')?.errors?.['maxlength']">El ID no puede tener más de 10 caracteres.</small>
+            <small class="error" *ngIf="productForm.get('id')?.errors?.['idTaken']">El ID ya está en uso.</small>
+          </div>
         </div>
+  
+        <!-- Nombre -->
+        <div class="form-group column">
+          <label for="name">Nombre</label>
+          <input id="name" formControlName="name" />
+          <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+            <small class="error" *ngIf="productForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
+            <small class="error" *ngIf="productForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 5 caracteres.</small>
+            <small class="error" *ngIf="productForm.get('name')?.errors?.['maxlength']">El nombre no puede tener más de 100 caracteres.</small>
+          </div>
+        </div>
+        
       </div>
       
-      <!-- Nombre -->
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input id="name" formControlName="name" />
-        <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
-          <small class="error" *ngIf="productForm.get('name')?.errors?.['required']">El nombre es obligatorio.</small>
-          <small class="error" *ngIf="productForm.get('name')?.errors?.['minlength']">El nombre debe tener al menos 5 caracteres.</small>
-          <small class="error" *ngIf="productForm.get('name')?.errors?.['maxlength']">El nombre no puede tener más de 100 caracteres.</small>
+      <div class="form-row">
+  
+        <!-- Descripción -->
+        <div class="form-group column">
+          <label for="description">Descripción</label>
+          <input id="description" formControlName="description" />
+          <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+            <small class="error" *ngIf="productForm.get('description')?.errors?.['required']">La descripción es obligatoria.</small>
+            <small class="error" *ngIf="productForm.get('description')?.errors?.['minlength']">La descripción debe tener al menos 10 caracteres.</small>
+            <small class="error" *ngIf="productForm.get('description')?.errors?.['maxlength']">La descripción no puede tener más de 200 caracteres.</small>
+          </div>
         </div>
-      </div>
-      
-      <!-- Descripción -->
-      <div class="form-group">
-        <label for="description">Descripción</label>
-        <input id="description" formControlName="description" />
-        <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
-          <small class="error" *ngIf="productForm.get('description')?.errors?.['required']">La descripción es obligatoria.</small>
-          <small class="error" *ngIf="productForm.get('description')?.errors?.['minlength']">La descripción debe tener al menos 10 caracteres.</small>
-          <small class="error" *ngIf="productForm.get('description')?.errors?.['maxlength']">La descripción no puede tener más de 200 caracteres.</small>
+  
+        <!-- Logo -->
+        <div class="form-group column">
+          <label for="logo">Logo</label>
+          <input id="logo" formControlName="logo" />
+          <div *ngIf="productForm.get('logo')?.invalid && productForm.get('logo')?.touched">
+            <small class="error" *ngIf="productForm.get('logo')?.errors?.['required']">El logo es obligatorio.</small>
+          </div>
         </div>
+  
       </div>
-      
-      <!-- Logo -->
-      <div class="form-group">
-        <label for="logo">Logo</label>
-        <input id="logo" formControlName="logo" />
-        <div *ngIf="productForm.get('logo')?.invalid && productForm.get('logo')?.touched">
-          <small class="error" *ngIf="productForm.get('logo')?.errors?.['required']">El logo es obligatorio.</small>
+  
+      <div class="form-row">
+  
+        <!-- Fecha de Liberación -->
+        <div class="form-group column">
+          <label for="date_release">Fecha de Liberación</label>
+          <input id="date_release" type="date" formControlName="date_release" />
+          <div *ngIf="productForm.get('date_release')?.invalid && productForm.get('date_release')?.touched">
+            <small class="error" *ngIf="productForm.get('date_release')?.errors?.['required']">La fecha de liberación es obligatoria.</small>
+            <small class="error" *ngIf="productForm.get('date_release')?.errors?.['invalidReleaseDate']">La fecha de liberación debe ser una fecha futura.</small>
+          </div>
         </div>
-      </div>
-      
-      <!-- Fecha de Liberación -->
-      <div class="form-group">
-        <label for="date_release">Fecha de Liberación</label>
-        <input id="date_release" type="date" formControlName="date_release" />
-        <div *ngIf="productForm.get('date_release')?.invalid && productForm.get('date_release')?.touched">
-          <small class="error" *ngIf="productForm.get('date_release')?.errors?.['required']">La fecha de liberación es obligatoria.</small>
-          <small class="error" *ngIf="productForm.get('date_release')?.errors?.['invalidReleaseDate']">La fecha de liberación debe ser una fecha futura.</small>
+  
+        <!-- Fecha de Revisión -->
+        <div class="form-group column">
+          <label for="date_revision">Fecha de Revisión</label>
+          <input id="date_revision" type="date" formControlName="date_revision" readonly />
+          <div *ngIf="productForm.get('date_revision')?.invalid && productForm.get('date_revision')?.touched">
+            <small class="error" *ngIf="productForm.get('date_revision')?.errors?.['required']">La fecha de revisión es obligatoria.</small>
+          </div>
         </div>
+  
       </div>
-      
-      <!-- Fecha de Revisión -->
-      <div class="form-group">
-        <label for="date_revision">Fecha de Revisión</label>
-        <input id="date_revision" type="date" formControlName="date_revision" readonly />
-        <div *ngIf="productForm.get('date_revision')?.invalid && productForm.get('date_revision')?.touched">
-          <small class="error" *ngIf="productForm.get('date_revision')?.errors?.['required']">La fecha de revisión es obligatoria.</small>
-        </div>
-      </div>
-      
+  
       <button type="submit">Agregar Producto</button>
     </form>
   </div>

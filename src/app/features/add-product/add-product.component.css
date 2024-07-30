@@ -1,40 +1,38 @@
 .add-product-container {
-    max-width: 600px;
+    max-width: 900px; /* Aumentar el ancho máximo para dos columnas */
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    color: #333;
+  .form-row {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las columnas se ajusten en pantallas pequeñas */
+    gap: 20px; /* Espacio entre columnas */
   }
   
-  form {
-    display: flex;
-    flex-direction: column;
+  .column {
+    flex: 1;
+    min-width: 0; /* Asegura que las columnas no se estrechen demasiado */
   }
   
   .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
-  label {
+  .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
   }
   
-  input[type="text"],
-  input[type="date"] {
-    width: 100%;
+  .form-group input,
+  .form-group textarea {
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
   }
   
   button {
@@ -45,18 +43,25 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
-    font-size: 1rem;
   }
   
   button:hover {
     background-color: #0056b3;
   }
   
-  /* Estilo para mensajes de error */
   .error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 5px;
+    color: #d9534f;
+    font-size: 0.875em;
+  }
+  
+  /* Media query para pantallas más pequeñas */
+  @media (max-width: 768px) {
+    .form-row {
+      flex-direction: column; /* Cambiar a una sola columna en pantallas pequeñas */
+    }
+  
+    .column {
+      margin-right: 0; /* Eliminar margen entre columnas */
+    }
   }
   
