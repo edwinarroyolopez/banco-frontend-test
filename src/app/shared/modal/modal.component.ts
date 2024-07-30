@@ -15,6 +15,8 @@ export class ModalComponent {
   constructor(private dataService: DataService) {}
 
   onSubmit() {
+    console.log('onSubmit');
+    
     this.dataService.addItem(this.newItem);
     this.newItem = { datoA: '', datoB: '', datoC: '' };
   }
