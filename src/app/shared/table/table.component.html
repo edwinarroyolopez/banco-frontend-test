@@ -1,38 +1,39 @@
 <div class="content-container">
     <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th class="avatar-header">Logo</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th class="date-column">Fecha de lanzamiento</th>
-                    <th class="date-column">Fecha de revisión</th>
-                    <th class="action-column"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let product of filteredProducts">
-                    <td class="avatar-cell">
-                        <div class="avatar">{{ getInitials(product.name) }}</div>
-                    </td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td class="date-column">{{ product.date_release }}</td>
-                    <td class="date-column">{{ product.date_revision }}</td>
-                    <td class="action-column">
-                        <button class="delete-button" (click)="confirmDeleteProduct(product.id)">Eliminar</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <table>
+        <thead>
+          <tr>
+            <th class="avatar-header">Logo</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th class="date-column">Fecha de lanzamiento</th>
+            <th class="date-column">Fecha de revisión</th>
+            <th class="actions-header"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of filteredProducts">
+            <td class="avatar-cell">
+              <div class="avatar">{{ getInitials(product.name) }}</div>
+            </td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td class="date-column">{{ product.date_release }}</td>
+            <td class="date-column">{{ product.date_revision }}</td>
+            <td class="actions-cell">
+              <button class="delete-button" (click)="confirmDeleteProduct(product)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="results-label">
-        <span>{{ filteredProducts.length }} Resultados</span>
-        <select class="items-per-page" (change)="onItemsPerPageChange($event)">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-        </select>
+      {{ filteredProducts.length }} Resultados
+      <select class="items-per-page" (change)="onItemsPerPageChange($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
     </div>
-</div>
+  </div>
+  

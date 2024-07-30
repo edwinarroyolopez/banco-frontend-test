@@ -1,41 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ModalService } from '../../core/modal.service';
 import { FormsModule } from '@angular/forms';
-import { DataService } from '../../core/data.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.css'],
-  standalone: true,
-  imports: [FormsModule]
+    standalone: true,
+  imports: [FormsModule, CommonModule]
 })
 export class ModalComponent {
-  newProduct = {
-    id: '', 
-    name: '',
-    description: '',
-    logo: '',
-    date_release: '',
-    date_revision: ''
-  };
+  message: string = '';
 
-  constructor(private dataService: DataService) {}
-
-  onSubmit() {
-    console.log('onSubmit', this.newProduct);
-    
-    this.dataService.addItem(this.newProduct);
-    
-    this.newProduct = {
-      id: '',
-      name: '',
-      description: '',
-      logo: '',
-      date_release: '',
-      date_revision: ''
-    };
+  constructor(private modalService: ModalService) {
+    this.modalService.message$.subscribe(message => {
+      this.message = message;
+    });
   }
 
-  closeModal() {
+  confirm(): void {
+    this.modalService.confirm();
+  }
+
+  closeModal(): void {
+    this.modalService.closeModal();
   }
 }
