@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Product, ApiResponse } from './api-response.model';
 
 @Injectable({
@@ -31,8 +31,13 @@ export class DataService {
   }
 
   addItem(product: Product) {
-    this.data.push(product); 
-    this.dataSubject.next(this.data); 
+    this.data.unshift(product);
+    this.updatePaginatedProducts();
+  }
+
+  isIdTaken(id: string): Promise<boolean | undefined> {
+    // Simulate a call to the server to check if the ID is taken
+    return of(this.data.some(product => product.id === id)).toPromise();
   }
 
   setItemsPerPage(itemsPerPage: number) {
