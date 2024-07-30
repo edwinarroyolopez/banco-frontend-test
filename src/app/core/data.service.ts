@@ -3,12 +3,6 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-interface DataItem {
-  datoA: string;
-  datoB: string;
-  datoC: string;
-}
-
 interface Product {
   id: string;
   name: string;
@@ -26,12 +20,7 @@ interface ApiResponse {
   providedIn: 'root',
 })
 export class DataService {
-  private data: DataItem[] = [
-    { datoA: 'Item1A', datoB: 'Item1B', datoC: 'Item1C' },
-    { datoA: 'Item2A', datoB: 'Item2B', datoC: 'Item2C' },
-    { datoA: 'Item3A', datoB: 'Item3B', datoC: 'Item3C' },
-  ];
-
+  private data: Product[] = []; // Variable para almacenar productos
 
   private apiUrl = 'http://localhost:3002/bp/products';
 
@@ -40,57 +29,32 @@ export class DataService {
   getProducts(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.apiUrl);
   }
-  
 
-  private dataSubject = new BehaviorSubject<DataItem[]>(this.data);
+  private dataSubject = new BehaviorSubject<Product[]>([]);
   data$ = this.dataSubject.asObservable();
 
-  addItem(item: DataItem) {
-    this.data.push(item);
-    this.dataSubject.next(this.data);
+  loadProducts() {
+    console.log('loadProducts');
+    this.getProducts().subscribe(response => {
+      this.data = response.data; // Almacena los productos en la variable data
+      this.dataSubject.next(this.data); // Emite los datos actuales
+    });
+  }
+
+  addItem(product: Product) {
+    this.data.push(product); // Agrega el nuevo producto al arreglo data
+    this.dataSubject.next(this.data); // Emite los datos actualizados
   }
 
   filterData(query: string) {
-
-    console.log(query);
+    console.log('filterData', query);
     const filteredData = this.data.filter(
       (item) =>
-        item.datoA.includes(query) ||
-        item.datoB.includes(query) ||
-        item.datoC.includes(query)
+        item.name.includes(query) ||
+        item.description.includes(query) ||
+        item.date_release.includes(query)
     );
-    this.dataSubject.next(filteredData);
+    
+    this.dataSubject.next(filteredData); // Emite los datos filtrados
   }
 }
-
-
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-
-// interface Product {
-//   id: string;
-//   name: string;
-//   description: string;
-//   logo: string;
-//   date_release: string;
-//   date_revision: string;
-// }
-
-// interface ApiResponse {
-//   data: Product[];
-// }
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ProductService {
-
-//   private apiUrl = 'http://localhost:3002/bp/products';
-
-//   constructor(private http: HttpClient) { }
-
-//   getProducts(): Observable<ApiResponse> {
-//     return this.http.get<ApiResponse>(this.apiUrl);
-//   }
-// }

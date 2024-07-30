@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../core/data.service';
+import { Subscription } from 'rxjs';
 
 interface Product {
   id: string;
@@ -14,35 +15,34 @@ interface Product {
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrl: './table.component.css',
+  styleUrls: ['./table.component.css'],
   standalone: true,
   imports: [CommonModule]
 })
 export class TableComponent implements OnInit {
   data: Product[] = [];
-  products: Product[] = [];
   filteredProducts: Product[] = [];
+  private subscription: Subscription = new Subscription();
 
   constructor(private dataService: DataService) {}
-  
+
   ngOnInit(): void {
-    this.dataService.getProducts().subscribe(response => {
-      this.products = response.data;
-      this.filteredProducts = response.data;
-      this.data = response.data;
-    });
+    this.dataService.loadProducts();
+
+    this.subscription.add(
+      this.dataService.data$.subscribe(products => {
+        this.data = products;
+        this.filteredProducts = products;
+      })
+    );
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   getInitials(name: string): string {
     const initials = name.split(' ').map(word => word[0]).join('');
     return initials.slice(0, 2).toUpperCase();
   }
-
-  // onSearchTermChanged(searchTerm: string) {
-  //   this.filteredProducts = this.products.filter(product =>
-  //     product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  // }
-
 }

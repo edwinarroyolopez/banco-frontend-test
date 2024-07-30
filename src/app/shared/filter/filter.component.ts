@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../core/data.service';
 
@@ -13,15 +13,10 @@ import { DataService } from '../../core/data.service';
 })
 export class FilterComponent {
   
-  constructor(private dataService: DataService) {
-    console.log('FilterComponent initialized');
-  }
+  constructor(private dataService: DataService) {}
 
   onFilter(event: Event) {
-    console.log('Input event triggered');
-    const filterValue = (event.target as HTMLInputElement).value;
-    console.log('onFilter:', filterValue);
-    
+    const filterValue = (event.target as HTMLInputElement).value;    
     this.dataService.filterData(filterValue);
   }
 }

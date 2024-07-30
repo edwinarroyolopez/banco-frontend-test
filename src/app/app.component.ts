@@ -12,10 +12,4 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'banco-frontend-test';
-
-  onInput(event: Event) {
-    console.log('Test input event triggered');
-    const value = (event.target as HTMLInputElement).value;
-    console.log('Input value:', value);
-  }
 }
