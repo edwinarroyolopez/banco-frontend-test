@@ -1,5 +1,5 @@
 .add-product-container {
-    max-width: 900px; 
+    max-width: 750px; 
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -55,7 +55,7 @@
   }
   
   
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     .form-row {
       flex-direction: column; 
     }
