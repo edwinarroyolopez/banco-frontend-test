@@ -1,5 +1,6 @@
 .content-container {
-    background-color: #f3f3f3;
+    background-color: #FFF;
+    padding: 15px;
 }
 .table-container {
     background-color: #FFF;
@@ -20,7 +21,7 @@
   }
   
   th {
-    background-color: #f4f4f4;
+    background-color: #f6f6f6;
   }
   
   tr {

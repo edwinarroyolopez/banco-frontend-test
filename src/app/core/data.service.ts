@@ -51,6 +51,8 @@ export class DataService {
   }
 
   filterData(query: string) {
+
+    console.log(query);
     const filteredData = this.data.filter(
       (item) =>
         item.datoA.includes(query) ||
