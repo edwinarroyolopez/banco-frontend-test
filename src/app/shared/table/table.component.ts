@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../core/data.service';
 import { Subscription } from 'rxjs';
@@ -19,9 +19,9 @@ interface Product {
   standalone: true,
   imports: [CommonModule]
 })
-export class TableComponent implements OnInit {
-  data: Product[] = [];
+export class TableComponent implements OnInit, OnDestroy {
   filteredProducts: Product[] = [];
+  itemsPerPage: number = 5;
   private subscription: Subscription = new Subscription();
 
   constructor(private dataService: DataService) {}
@@ -31,7 +31,6 @@ export class TableComponent implements OnInit {
 
     this.subscription.add(
       this.dataService.data$.subscribe(products => {
-        this.data = products;
         this.filteredProducts = products;
       })
     );
@@ -44,5 +43,15 @@ export class TableComponent implements OnInit {
   getInitials(name: string): string {
     const initials = name.split(' ').map(word => word[0]).join('');
     return initials.slice(0, 2).toUpperCase();
+  }
+
+  updatePaginatedProducts(): void {
+    this.dataService.setItemsPerPage(this.itemsPerPage);
+  }
+
+  onItemsPerPageChange(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    this.itemsPerPage = Number(selectElement.value);
+    this.updatePaginatedProducts();
   }
 }
