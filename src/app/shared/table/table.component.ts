@@ -54,4 +54,16 @@ export class TableComponent implements OnInit, OnDestroy {
     this.itemsPerPage = Number(selectElement.value);
     this.updatePaginatedProducts();
   }
+
+  confirmDeleteProduct(productId: string) {
+    // this.modalService.openModal('¿Está seguro que quiere eliminar este producto?', () => {
+    //   this.deleteProduct(productId);
+    // });
+  }
+
+  deleteProduct(productId: string) {
+    this.filteredProducts = this.filteredProducts.filter(product => product.id !== productId);
+    this.updatePaginatedProducts();
+  }
+
 }

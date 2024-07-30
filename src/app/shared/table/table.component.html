@@ -3,11 +3,12 @@
         <table>
             <thead>
                 <tr>
-                    <th>Logo</th>
+                    <th class="avatar-header">Logo</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th>Fecha de lanzamiento</th>
-                    <th>Fecha de revisión</th>
+                    <th class="date-column">Fecha de lanzamiento</th>
+                    <th class="date-column">Fecha de revisión</th>
+                    <th class="action-column"></th>
                 </tr>
             </thead>
             <tbody>
@@ -17,19 +18,21 @@
                     </td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
-                    <td>{{ product.date_release }}</td>
-                    <td>{{ product.date_revision }}</td>
+                    <td class="date-column">{{ product.date_release }}</td>
+                    <td class="date-column">{{ product.date_revision }}</td>
+                    <td class="action-column">
+                        <button class="delete-button" (click)="confirmDeleteProduct(product.id)">Eliminar</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="results-label">
-        {{ filteredProducts.length }} Resultados
-        <select (change)="onItemsPerPageChange($event)">
+        <span>{{ filteredProducts.length }} Resultados</span>
+        <select class="items-per-page" (change)="onItemsPerPageChange($event)">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
         </select>
     </div>
 </div>
-
