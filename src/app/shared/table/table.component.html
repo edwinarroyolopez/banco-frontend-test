@@ -1,39 +1,44 @@
 <div class="content-container">
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th class="avatar-header">Logo</th>
-            <th>Nombre</th>
-            <th>Descripción <i class="info-icon">i</i></th>
-            <th class="date-column">Fecha de liberación <i class="info-icon">i</i></th>
-            <th class="date-column">Fecha de revisión <i class="info-icon">i</i></th>
-            <th class="actions-header"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let product of filteredProducts">
-            <td class="avatar-cell">
-              <div class="avatar">{{ getInitials(product.name) }}</div>
-            </td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.description }}</td>
-            <td class="date-column">{{ product.date_release }}</td>
-            <td class="date-column">{{ product.date_revision }}</td>
-            <td class="actions-cell">
-              <button class="delete-button" (click)="confirmDeleteProduct(product)">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="results-label">
-      {{ filteredProducts.length }} Resultados
-      <select class="items-per-page" (change)="onItemsPerPageChange($event)">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-      </select>
-    </div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th class="avatar-header">Logo</th>
+          <th>Nombre</th>
+          <th>Descripción <i class="info-icon">i</i></th>
+          <th class="date-column">Fecha de liberación <i class="info-icon">i</i></th>
+          <th class="date-column">Fecha de revisión <i class="info-icon">i</i></th>
+          <th class="actions-header"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of filteredProducts">
+          <td class="avatar-cell">
+            <div class="avatar">{{ getInitials(product.name) }}</div>
+          </td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td class="date-column">{{ product.date_release }}</td>
+          <td class="date-column">{{ product.date_revision }}</td>
+          <td class="actions-cell">
+            <div class="menu">
+              <button class="menu-button">⋮</button>
+              <div class="menu-content">
+                <button (click)="editProduct(product)">Editar</button>
+                <button (click)="confirmDeleteProduct(product)">Eliminar</button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+  <div class="results-label">
+    {{ filteredProducts.length }} Resultados
+    <select class="items-per-page" (change)="onItemsPerPageChange($event)">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+</div>
