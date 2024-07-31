@@ -1,45 +1,45 @@
 .home-container {
-    background-color: #F3F3F3;
-    padding: 50px;
+  background-color: #F3F3F3;
+  padding: 50px;
 }
 
 .top-container {
-    display: flex;
-    flex-direction: row;
-    
-   
-    gap: 10px;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 
 button {
-    background-color: #007bff; 
-    color: white;
-    border: none;
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    max-width: 400px; 
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  @media (max-width: 600px) {
-    .top-container {
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        align-items: stretch;
-    }
+  background-color: rgb(249 205 11); 
+  color: #000;
+  border: none;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: 400px; 
+}
 
-    button {
-      width: 100%;
-      font-size: 14px;
-      padding: 10px;
-      margin: 10px 0;
-    }
+button:hover {
+  opacity: .5;
+}
+
+@media (max-width: 600px) {
+  .top-container {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
+
+  button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+}

@@ -16,7 +16,11 @@
     border-radius: 5px;
     text-align: center;
   }
-  
+
+  .modal-content .message {
+    font-size: 18px;
+  }
+
   .modal-actions {
     display: flex;
     justify-content: space-around;
@@ -24,18 +28,26 @@
   }
   
   .confirm-button, .cancel-button {
-    padding: 10px 20px;
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
   .confirm-button {
-    background-color: #ff4d4d;
-    color: white;
+    background-color: rgb(249 205 11 / 100%); 
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;;
   }
   
   .cancel-button {
-    background-color: #ccc;
+    background-color: #F3F3F3;
+    border: solid 1px #CCC;
+    font-size: 16px;
+    font-weight: bold;;
   }
   
+  .confirm-button:hover, .cancel-button:hover {
+    opacity: .5;
+  }
