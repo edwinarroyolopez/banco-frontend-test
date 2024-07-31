@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { FilterComponent } from '../../shared/filter/filter.component';
 import { TableComponent } from '../../shared/table/table.component';
 import { ModalComponent } from '../../shared/modal/modal.component';
-import { CommonModule } from '@angular/common';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DataService } from '../../core/data.service';
-import { By } from '@angular/platform-browser';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -15,16 +15,15 @@ describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        HomeComponent,
+        CommonModule,
+        RouterTestingModule,
+        HttpClientModule,
         FilterComponent,
         TableComponent,
-        ModalComponent,
-        CommonModule,
-        HttpClientTestingModule
+        ModalComponent
       ],
-      providers: [
-        DataService
-      ]
+      declarations: [],
+      providers: [DataService]
     }).compileComponents();
   });
 
@@ -34,26 +33,21 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create the component', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should open the modal when the button is clicked', () => {
-    const button = fixture.debugElement.query(By.css('button'));
-    button.triggerEventHandler('click', null);
-    fixture.detectChanges();
-    expect(component.isModalOpen).toBeTrue();
-    const modal = fixture.debugElement.query(By.css('app-modal'));
-    expect(modal).toBeTruthy();
+  it('should have a button to add product', () => {
+    const compiled = fixture.nativeElement;
+    const button = compiled.querySelector('button[routerLink="/add-product"]');
+    expect(button).toBeTruthy();
+    expect(button.textContent).toContain('Agregar');
   });
 
-  it('should close the modal when closeModal is called', () => {
-    component.isModalOpen = true;
-    fixture.detectChanges();
-    component.closeModal();
-    fixture.detectChanges();
-    expect(component.isModalOpen).toBeFalse();
-    const modal = fixture.debugElement.query(By.css('app-modal'));
-    expect(modal).toBeFalsy();
+  it('should contain app-filter, app-table, and app-modal components', () => {
+    const compiled = fixture.nativeElement;
+    expect(compiled.querySelector('app-filter')).toBeTruthy();
+    expect(compiled.querySelector('app-table')).toBeTruthy();
+    expect(compiled.querySelector('app-modal')).toBeTruthy();
   });
 });

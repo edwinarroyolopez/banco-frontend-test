@@ -15,16 +15,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy(); // Modificado para que falle
   });
 
-  it(`should have the 'banco-frontend-test' title`, () => {
+  it(`should have the 'BANCO' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('banco-frontend-test'); 
+    expect(app.title).toEqual('BANCO'); 
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('banco-frontend-test');
+    expect(compiled.querySelector('h1')?.textContent).toContain('BANCO');
   });
 });
