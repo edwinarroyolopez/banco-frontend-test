@@ -36,8 +36,19 @@ export class DataService {
   }
 
   isIdTaken(id: string): Promise<boolean | undefined> {
-    // Simulate a call to the server to check if the ID is taken
     return of(this.data.some(product => product.id === id)).toPromise();
+  }
+
+  getProductById(id: string): Product | undefined {
+    return this.data.find(product => product.id === id);
+  }
+
+  updateProduct(updatedProduct: Product) {
+    const index = this.data.findIndex(product => product.id === updatedProduct.id);
+    if (index !== -1) {
+      this.data[index] = updatedProduct;
+      this.updatePaginatedProducts();
+    }
   }
 
   setItemsPerPage(itemsPerPage: number) {

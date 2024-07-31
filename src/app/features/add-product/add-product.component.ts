@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+
 import { DataService } from '../../core/data.service';
-
-
+import { Product } from '../../core/api-response.model';
 
 @Component({
   selector: 'app-add-product',
@@ -15,11 +16,13 @@ import { DataService } from '../../core/data.service';
 })
 export class AddProductComponent implements OnInit {
   productForm!: FormGroup;
+  product!: Product | undefined | null;
 
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -45,9 +48,21 @@ export class AddProductComponent implements OnInit {
       });
     }
 
+    this.route.paramMap.subscribe(params => {
+      const productId = params.get('id');
+      if (productId) {
+        this.product = this.dataService.getProductById(productId);
+        if (this.product) {
+          this.productForm.patchValue(this.product);
+        }
+      }
+    });
   }
 
   validateIdNotTaken(control: any) {
+    if (this.product && this.product.id === control.value) {
+      return of(null);
+    }
     return this.dataService.isIdTaken(control.value).then(isTaken => {
       return isTaken ? { idTaken: true } : null;
     });
@@ -60,12 +75,15 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit(): void {
-    
     this.productForm.markAllAsTouched();
 
     if (this.productForm.valid) {
-      const newProduct = this.productForm.value;
-      this.dataService.addItem(newProduct);
+      const product = this.productForm.value;
+      if (this.product) {
+        this.dataService.updateProduct(product);
+      } else {
+        this.dataService.addItem(product);
+      }
       this.router.navigate(['/']);
     }
   }
