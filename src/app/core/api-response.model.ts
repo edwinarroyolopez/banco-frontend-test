@@ -11,3 +11,6 @@ export interface Product {
     data: Product[];
   }
   
+  export interface ApiResponseProduct {
+    data: Product;
+  }

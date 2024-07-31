@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 
 import { DataService } from '../../core/data.service';
@@ -12,7 +12,7 @@ import { Product } from '../../core/api-response.model';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule, RouterModule]
 })
 export class AddProductComponent implements OnInit {
   productForm!: FormGroup;
