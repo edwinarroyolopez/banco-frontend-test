@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
 import { Product, ApiResponse } from './api-response.model';
 
 @Injectable({
@@ -14,7 +13,7 @@ export class DataService {
 
   private apiUrl = 'http://localhost:3002/bp/products';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.apiUrl);
@@ -31,6 +30,7 @@ export class DataService {
   }
 
   addItem(product: Product) {
+    console.log('addItem', product);
     this.data.unshift(product);
     this.updatePaginatedProducts();
   }
