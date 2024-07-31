@@ -65,5 +65,9 @@ export class TableComponent implements OnInit, OnDestroy {
   deleteProduct(productId: string): void {
     this.dataService.removeProduct(productId);
   }
+
+  editProduct(product: Product): void {
+    console.log('Edit product:', product);
+  }
   
 }
