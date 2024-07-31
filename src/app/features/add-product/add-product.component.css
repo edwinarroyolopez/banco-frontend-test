@@ -1,15 +1,18 @@
 .add-product-container {
-    max-width: 750px; 
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 650px; 
+    margin: 30px auto;
+    padding: 10px 0px;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
   }
   
   h2 {
     text-align: center;
   }
-  
+  .productForm {
+    padding: 15px 40px;
+  }
+
   .form-row {
     display: flex;
     flex-wrap: wrap; 
@@ -38,19 +41,36 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  .form-actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 45px;
+  }
   
-  button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+  .send-button, .restart-button {
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
+
+  .send-button {
+    background-color: rgb(249 205 11 / 100%); 
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;;
+  }
   
-  button:hover {
-    background-color: #0056b3;
+  .restart-button {
+    background-color: #F3F3F3;
+    border: solid 1px #CCC;
+    font-size: 16px;
+    font-weight: bold;;
+  }
+
+  .send-button:hover, .restart-button:hover {
+    opacity: .5;
   }
   
   .error {
