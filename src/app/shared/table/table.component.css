@@ -7,7 +7,6 @@
 .table-container {
   background-color: #FFF;
   width: 100%;
-  overflow-x: auto;
 }
 
 table {
@@ -89,25 +88,11 @@ tr {
   position: relative;
 }
 
-.delete-button {
-  display: none;
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 tr:hover .delete-button {
   display: inline-block;
 }
 
-
+/* contextual menu */
 .menu {
   position: relative;
   display: inline-block;

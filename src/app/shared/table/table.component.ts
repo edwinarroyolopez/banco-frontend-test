@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DataService } from '../../core/data.service';
 import { Subscription } from 'rxjs';
 import { ModalService } from '../../core/modal.service';
+import { Router } from '@angular/router';
 
 interface Product {
   id: string;
@@ -25,7 +26,11 @@ export class TableComponent implements OnInit, OnDestroy {
   itemsPerPage: number = 5;
   private subscription: Subscription = new Subscription();
 
-  constructor(private dataService: DataService, private modalService: ModalService) {}
+  constructor(
+    private dataService: DataService,
+    private modalService: ModalService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.dataService.loadProducts();
@@ -61,13 +66,12 @@ export class TableComponent implements OnInit, OnDestroy {
       this.deleteProduct(product.id);
     });
   }
-  
+
   deleteProduct(productId: string): void {
     this.dataService.removeProduct(productId);
   }
 
   editProduct(product: Product): void {
-    console.log('Edit product:', product);
+    this.router.navigate(['/edit-product', product.id]);
   }
-  
 }

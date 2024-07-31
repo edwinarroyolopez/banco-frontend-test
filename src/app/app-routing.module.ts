@@ -5,7 +5,8 @@ import { AddProductComponent } from './features/add-product/add-product.componen
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'add-product', component: AddProductComponent }
+  { path: 'add-product', component: AddProductComponent },
+  { path: 'edit-product/:id', component: AddProductComponent }
 ];
 
 @NgModule({
