@@ -13,5 +13,5 @@ import { AddProductComponent } from './features/add-product/add-product.componen
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'banco-frontend-test';
+  title = 'BANCO';
 }

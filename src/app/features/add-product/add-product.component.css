@@ -1,5 +1,5 @@
 .add-product-container {
-    max-width: 600px;
+    max-width: 750px; 
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -7,34 +7,36 @@
   }
   
   h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    color: #333;
+    text-align: center;
   }
   
-  form {
+  .form-row {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap; 
+    gap: 20px; 
+  }
+  
+  .column {
+    flex: 1;
+    min-width: 0; 
   }
   
   .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
-  label {
+  .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
   }
   
-  input[type="text"],
-  input[type="date"] {
-    width: 100%;
+  .form-group input,
+  .form-group textarea {
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-sizing: border-box;
   }
   
   button {
@@ -45,18 +47,25 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
-    font-size: 1rem;
   }
   
   button:hover {
     background-color: #0056b3;
   }
   
-  /* Estilo para mensajes de error */
   .error {
-    color: red;
-    font-size: 0.875rem;
-    margin-top: 5px;
+    color: #d9534f;
+    font-size: 0.875em;
+  }
+  
+  
+  @media (max-width: 480px) {
+    .form-row {
+      flex-direction: column; 
+    }
+  
+    .column {
+      margin-right: 0; 
+    }
   }
   
