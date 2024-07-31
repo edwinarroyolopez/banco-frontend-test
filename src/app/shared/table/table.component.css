@@ -24,7 +24,22 @@ th, td {
 
 thead th {
   background-color: #f6f6f6;
+  color: #444;
 }
+thead th .info-icon {
+  display: inline-block;
+  margin-left: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #AAA;
+  color: white;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 
 tr {
   border-bottom: 1px solid #ddd;
