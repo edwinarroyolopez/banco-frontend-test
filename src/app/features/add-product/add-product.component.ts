@@ -48,7 +48,6 @@ export class AddProductComponent implements OnInit {
       });
     }
 
-    // Cargar datos del producto si existe en la ruta
     this.route.paramMap.subscribe(params => {
       const productId = params.get('id');
       if (productId) {
@@ -81,10 +80,8 @@ export class AddProductComponent implements OnInit {
     if (this.productForm.valid) {
       const product = this.productForm.value;
       if (this.product) {
-        // Actualizar producto existente
         this.dataService.updateProduct(product);
       } else {
-        // Añadir nuevo producto
         this.dataService.addItem(product);
       }
       this.router.navigate(['/']);
